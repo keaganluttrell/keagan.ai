@@ -1,43 +1,35 @@
-# Astro Starter Kit: Minimal
+# keagan.ai
+
+Personal portfolio site. Built with [Astro](https://astro.build), hosted on Cloudflare Pages.
+
+## Stack
+
+- Astro 6 (static output)
+- Vanilla CSS (no framework)
+- GitHub Actions for CI/CD
+
+## Development
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev       # localhost:4321
+npm run build     # outputs to ./dist
+npm run preview   # preview the build
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Deployment
 
-## 🚀 Project Structure
+Deployed automatically on push to `main` via GitHub Actions → Cloudflare Pages.
 
-Inside of your Astro project, you'll see the following folders and files:
+### First-time setup
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Add these secrets to the GitHub repo (Settings → Secrets → Actions):
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- `CLOUDFLARE_API_TOKEN` — needs Pages:Edit permission
+- `CLOUDFLARE_ACCOUNT_ID` — your CF account ID (`f8d5f8a98b0412fdaa2685330ac69356`)
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Then create the Pages project in Cloudflare dashboard or via `wrangler pages project create keagan-ai`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Custom domain
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Once the Pages project is created, point `keagan.ai` → the `keagan-ai.pages.dev` subdomain via a CNAME record in Cloudflare DNS.
